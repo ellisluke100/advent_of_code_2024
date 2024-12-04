@@ -21,18 +21,11 @@ all_statements = re.findall(big_gex, input_str)
 
 sum = 0
 enabled = True
-disabled = False
 for statement in all_statements:
-    print(statement)
-    if statement == "do()":
-        enabled = True
-        disabled = False
+    if statement in ["do()", "don't()"]:
+        enabled = True if statement == "do()" else False
         continue
-    elif statement == "don't()":
-        enabled = False
-        disabled = True
-        continue
-    
+
     if enabled:
         splitted = statement.split(',')
         parameters = {
